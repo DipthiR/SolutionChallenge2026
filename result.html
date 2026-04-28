@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>Analysis Result</h1>
+
+<p><b>Bias Detected:</b> {{ result.bias_detected }}</p>
+<p><b>Feature:</b> {{ result.feature }}</p>
+<p><b>Fairness Score:</b> {{ result.fairness_score }}%</p>
+<p><b>Recommendation:</b> {{ result.recommendation }}</p>
+
+<h2>Group Comparison</h2>
+<ul>
+    {% for key, value in result.group_stats.items() %}
+        <li>{{ key }} → {{ value }}</li>
+    {% endfor %}
+</ul>
+
+{% if chart %}
+    <h2>Visualization</h2>
+    <img src="/{{ chart }}" width="400">
+{% endif %}
+
+<a href="/">Go Back</a>
+
+</body>
+</html>
